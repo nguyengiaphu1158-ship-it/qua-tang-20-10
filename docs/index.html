@@ -1,126 +1,156 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Món quà 20/10</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #fdf6f0, #faedcd);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-    .card {
-      background: #ffffff;
-      padding: 40px 25px;
-      border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      max-width: 450px;
-      width: 100%;
-      margin-bottom: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .date-badge {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: #e63946;
-      margin-bottom: 5px;
-    }
-    h1 {
-      font-size: 1.7rem;
-      color: #d62828;
-      margin-bottom: 10px;
-    }
-    p.subtitle {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #457b9d;
-      margin-bottom: 20px;
-    }
-    p.message {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 25px;
-      background: #f8f9fa;
-      padding: 12px;
-      border-radius: 12px;
-    }
-    .wishes-list {
-      text-align: left;
-      margin: 20px 0;
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-    .wishes-list li {
-      list-style: none;
-      margin-bottom: 10px;
-      background: #fdf0ed;
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: #b7094c;
-    }
-    .footer-note {
-      font-size: 0.9rem;
-      color: #e07a5f;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    /* Khung hiển thị media/nhạc */
-    .media-box {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Có một món quà nhỏ cho ngày 20/10</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d0a12;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        .flower-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px auto;
+            background: radial-gradient(circle, rgba(255,182,193,0.2) 0%, rgba(13,10,18,0) 70%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .flower-icon::before {
+            content: '🌷';
+            font-size: 40px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 105, 180, 0.3); }
+            50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(255, 105, 180, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 105, 180, 0.3); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: #f3e5f5;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .btn-open {
+            background: rgba(255, 105, 180, 0.15);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            color: #ffb6c1;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+            outline: none;
+        }
+
+        .btn-open:active {
+            transform: scale(0.95);
+            background: rgba(255, 105, 180, 0.3);
+        }
+
+        .sub-text {
+            position: absolute;
+            bottom: 25px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* Giao diện nội dung khi bấm chạm mở quà */
+        .card-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: 20px;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #ffe4e1;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="date-badge">20 / 10</div>
-    <h1>Phụ Nữ Việt Nam</h1>
-    <p class="subtitle">Gửi tới những bông hoa tuyệt đẹp 12.11 💐</p>
-    
-    <p class="message">
-      Mong mỗi ngày của cậu đều có hoa, có nắng, có tiếng cười — và có người nhớ đến cậu thật nhiều.
-    </p>
+    <div class="container" id="main-screen">
+        <div class="flower-icon"></div>
+        <h1>Có một món quà nhỏ<br>cho ngày 20/10</h1>
+        <button class="btn-open" onclick="openGift()">chạm để mở quà</button>
+    </div>
 
-    <ul class="wishes-list">
-      <li>☀ Mỗi ngày luôn giữ được nụ cười tươi tắn nhất</li>
-      <li>✿ Luôn gặp nhiều may mắn và hạnh phúc trong cuộc sống</li>
-      <li>☾ Đừng quá mệt mỏi, hãy biết yêu thương bản thân nhiều hơn nhé</li>
-    </ul>
+    <!-- Màn hình sau khi bấm mở quà -->
+    <div class="card-content" id="gift-screen">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">💐✨</div>
+        <p class="message-p">Chúc bạn một ngày 20/10 thật nhiều niềm vui, luôn rực rỡ, xinh đẹp và hạnh phúc nhé!</p>
+        <p style="font-size: 0.85rem; color: #ffb6c1; margin-top: 15px;">Happy Vietnamese Women's Day! ❤️</p>
+    </div>
 
-    <div class="footer-note">Chúc mừng ngày 20/10 thật ý nghĩa và ngập tràn niềm vui! ♥</div>
-  </div>
+    <div class="sub-text">bật âm thanh để nghe trọn vẹn nhé</div>
 
-  <!-- Phần phát nhạc/video y hệt như video bạn gửi -->
-  <div class="media-box">
-    <video controls autoplay playsinline loop>
-      <source src="nhac.mp4" type="video/mp4">
-      Trình duyệt của bạn không hỗ trợ phát video.
-    </video>
-  </div>
+    <!-- Nhạc nền bài hát -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="nhac.mp4" type="audio/mp4">
+        <source src="https://huyndcv.github.io/20102026/ltt/music.mp3" type="audio/mpeg">
+    </audio>
 
+    <script>
+        function openGift() {
+            var music = document.getElementById('bg-music');
+            music.play().catch(function(e) {
+                console.log("Autoplay blocked");
+            });
+
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('gift-screen').style.display = 'block';
+        }
+    </script>
 </body>
-  </html>
-  
+</html>
